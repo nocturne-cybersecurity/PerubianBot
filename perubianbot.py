@@ -166,9 +166,9 @@ def formulario():
             return cadena
 
         datos_persona = ''
-        number = pregunta_estilizada('Nº de Teléfono: ')
-        while len(number) != 9 or not number.isdigit() or number[0] not in prefijos:
-            number = pregunta_estilizada('Número incorrecto. Ingrese Nº de Teléfono nuevamente: ')
+        number = pregunta_estilizada('Nº de Teléfono (9 dígitos España / 10 dígitos México): ')
+	      while not number.isdigit() or len(number) not in (9, 10):
+    	    number = pregunta_estilizada('Número incorrecto. Ingrese nuevamente (9 dígitos España / 10 dígitos México): ')
         datos_persona += Fore.WHITE + Style.BRIGHT + f"Nº de Teléfono: {number}\n" + Style.RESET_ALL
 
         name = pregunta_estilizada('Nombre de la persona: ', datos_previos=datos_persona, validacion=validacion_no_vacia)
